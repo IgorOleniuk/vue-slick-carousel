@@ -807,6 +807,9 @@ export const getTrackCSS = spec => {
     WebkitTransition: '',
   }
   if (spec.useTransform) {
+    if (!spec.vertical && spec.myShit === spec.index) {
+      spec.left = spec.left + (spec.slideWidth / 2);
+    }
     let WebkitTransform = !spec.vertical
       ? 'translate3d(' + spec.left + 'px, 0px, 0px)'
       : 'translate3d(0px, ' + spec.left + 'px, 0px)'

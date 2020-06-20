@@ -36,6 +36,7 @@ export const props = {
   variableWidth: { type: Boolean, default: false },
   vertical: { type: Boolean, default: false },
   waitForAnimate: { type: Boolean, default: true },
+  sliderAmount: { type: Number, default: 0 },
 }
 
 export const defaultValues = Object.keys(props).reduce((acc, key) => {

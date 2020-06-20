@@ -24,7 +24,7 @@ const asNavForTemplate2 = `<VueSlickCarousel
 
 export default {
   simple: {
-    title: 'Simple Slides',
+    title: 'Simple Slides123',
     settings: {
       dots: true,
       dotsClass: 'slick-dots custom-dot-class',
@@ -33,6 +33,7 @@ export default {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
+      myShit: 5,
     },
   },
   multiple: {
@@ -116,12 +117,14 @@ export default {
   'center-mode': {
     title: 'Center Mode',
     settings: {
-      centerMode: true,
-      centerPadding: '20px',
+      /* centerMode: true,
+      centerPadding: '20px', */
       focusOnSelect: true,
-      infinite: true,
-      slidesToShow: 3,
+      infinite: false,
+      slidesToShow: 1.5,
+      slidesToScroll: 1,
       speed: 500,
+      sliderAmount: 5,
     },
   },
   fade: {
