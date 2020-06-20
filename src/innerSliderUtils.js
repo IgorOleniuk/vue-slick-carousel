@@ -807,7 +807,7 @@ export const getTrackCSS = spec => {
     WebkitTransition: '',
   }
   if (spec.useTransform) {
-    if (!spec.vertical && spec.myShit === spec.index) {
+    if (!spec.vertical && spec.sliderAmount === spec.index) {
       spec.left = spec.left + (spec.slideWidth / 2);
     }
     let WebkitTransform = !spec.vertical
