@@ -1,3 +1,5 @@
+let maxLeft = 0;
+
 export const canUseDOM = () =>
   !!(
     typeof window !== 'undefined' &&
@@ -797,7 +799,7 @@ export const getTrackCSS = spec => {
   let trackWidth, trackHeight
   const trackChildren = spec.slideCount + 2 * spec.slidesToShow
   if (!spec.vertical) {
-    trackWidth = getTotalSlides(spec) * spec.slideWidth
+    trackWidth = getTotalSlides(spec) * spec.slideWidth;
   } else {
     trackHeight = trackChildren * spec.slideHeight
   }
@@ -808,7 +810,12 @@ export const getTrackCSS = spec => {
   }
   if (spec.useTransform) {
     if (!spec.vertical && spec.sliderAmount === spec.index) {
-      spec.left = spec.left + (spec.slideWidth / 2);
+      maxLeft = spec.left + (spec.slideWidth / 2);
+      spec.left = maxLeft;
+    }
+    if (!spec.vertical &&  maxLeft !== 0 && spec.left < maxLeft) {
+      console.log('tyt2324 ' + maxLeft);
+      spec.left = maxLeft;
     }
     let WebkitTransform = !spec.vertical
       ? 'translate3d(' + spec.left + 'px, 0px, 0px)'
