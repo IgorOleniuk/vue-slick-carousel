@@ -808,9 +808,11 @@ export const getTrackCSS = spec => {
     transition: '',
     WebkitTransition: '',
   }
+
   if (spec.useTransform) {
+    let widthFixer = spec.slidesToShow - 1;
     if (!spec.vertical && spec.sliderAmount === spec.index) {
-      maxLeft = spec.left + (spec.slideWidth / 2);
+      maxLeft = spec.left + (spec.slideWidth * widthFixer);
       spec.left = maxLeft;
     }
     if (!spec.vertical &&  maxLeft !== 0 && spec.left < maxLeft) {
