@@ -1,4 +1,4 @@
-let maxLeft = 0;
+// let maxLeft = 0;
 
 export const canUseDOM = () =>
   !!(
@@ -123,7 +123,6 @@ export const changeSlide = (spec, options) => {
   } = spec
   unevenOffset = slideCount % slidesToScroll !== 0
   indexOffset = unevenOffset ? 0 : (slideCount - currentSlide) % slidesToScroll
-
   if (options.message === 'previous') {
     slideOffset =
       indexOffset === 0 ? slidesToScroll : slidesToShow - indexOffset
@@ -572,6 +571,7 @@ export const slideHandler = spec => {
         lazyLoadedList,
       }
     } else {
+      console.log('cd volume');
       state = {
         animating: true,
         currentSlide: finalSlide,
@@ -749,7 +749,20 @@ export const getTrackLeft = spec => {
   verticalOffset = slidesToOffset * slideHeight
 
   if (!vertical) {
-    targetLeft = slideIndex * slideWidth * -1 + slideOffset
+    console.log(spec);
+    console.log(spec.index);
+    if (spec.slideCount - 1 === spec.index || spec.slideCount === spec.index || spec.currentSlide > spec.slideCount - 2 && spec.index !== spec.slideCount - 2) {
+      console.log(spec.currentSlide)
+      console.log('suka');
+      let widthFixer = spec.slidesToShow - 1;
+      targetLeft = (slideIndex * slideWidth * -1 + slideOffset) + (spec.slideWidth * widthFixer);
+    } else {
+      console.log('sds');
+      targetLeft = slideIndex * slideWidth * -1 + slideOffset
+    }
+    console.log(slideWidth);
+    console.log(slideOffset);
+    console.log(targetLeft);
   } else {
     targetLeft = slideIndex * slideHeight * -1 + verticalOffset
   }
@@ -810,15 +823,17 @@ export const getTrackCSS = spec => {
   }
 
   if (spec.useTransform) {
-    let widthFixer = spec.slidesToShow - 1;
+    /* let widthFixer = spec.slidesToShow - 1;
     if (!spec.vertical && spec.sliderAmount === spec.index) {
       maxLeft = spec.left + (spec.slideWidth * widthFixer);
-      spec.left = maxLeft;
     }
+   /!*  console.log(spec.left);
+    console.log(maxLeft); *!/
+    // console.log(spec);
     if (!spec.vertical &&  maxLeft !== 0 && spec.left < maxLeft) {
-      console.log('tyt2324 ' + maxLeft);
-      spec.left = maxLeft;
-    }
+      spec.left = maxLeft - 150;
+    } */
+    // console.log(spec.left + 'supchik');
     let WebkitTransform = !spec.vertical
       ? 'translate3d(' + spec.left + 'px, 0px, 0px)'
       : 'translate3d(0px, ' + spec.left + 'px, 0px)'
